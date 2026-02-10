@@ -30,3 +30,13 @@ export function showToastMsg(msg){
       	style: { position: 'absolute', bottom:10,left:10,right:10, borderRadius: 5 }	
     });
 }
+
+export const isUpdateRequired = (current, latest) => {
+	const [currentMajor, currentMinor] = current.split('.').map(Number);
+	const [latestMajor, latestMinor] = latest.split('.').map(Number);
+
+	return (
+		currentMajor < latestMajor ||
+		(currentMajor === latestMajor && currentMinor < latestMinor)
+	);
+};
